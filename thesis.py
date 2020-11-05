@@ -1,10 +1,3 @@
-
-def BSM(spot,strike,ttm,vol):
-    import numpy as np
-    return np.log(spot/strike)
-
-
-
 #https://pythonforfinance.net/2016/11/28/monte-carlo-simulation-in-python/
 def MCWiener(PathNum,IterNum,Start,sigma,Annualrfree):
     import numpy as np
@@ -99,8 +92,5 @@ if __name__ == '__main__':
 
     #plt.plot(bins, 1/(sigma * np.sqrt(2 * np.pi)) * np.exp( - (bins - mu)**2 / (2 * sigma**2) ), linewidth=2, color='r')
     #plt.show()
-
-
-
 
     sys.exit(0)
