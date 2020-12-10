@@ -1,23 +1,5 @@
 #https://pythonforfinance.net/2016/11/28/monte-carlo-simulation-in-python/
-def MCWiener(PathNum,IterNum,Start,sigma,Annualrfree):
-    import numpy as np
-    import pandas as pd
 
-    resultset=pd.Series([None]*PathNum)
-    dt=1/360
-    print('rfree:{:.10f} dT:{:.4f}'.format(Annualrfree/360,dt))
-    for k in range(PathNum):
-        z=None
-        z=Start
-
-        for l  in range(1,IterNum+1):
-            z=z+z*Annualrfree*dt+z*np.sqrt(dt)*np.random.normal(loc=0.0, scale=sigma)*sigma
-            #z=z+np.random.normal(loc=0.0, scale=sigma)
-        resultset[k]=z
-        
-        resultset=pd.to_numeric(resultset, errors='coerce') #otherwise it will be an object time that fails for the math functions
-        #print('Final for ' + str(k) + ' is ' +str(resultset[k]) )       
-    return resultset
 
 if __name__ == '__main__':
     import sys
@@ -81,6 +63,7 @@ if __name__ == '__main__':
     RetSetl = axs[2].plot(Retbins, RetSety, 'black', linewidth=2)
     axs[2].set_title(r'$\mathrm{Histogram\ of\ Returns:}\ \mu=%.3f,\ \sigma=%.3f$' %( Retmu, Retsigma))
     
+    
     K=10.1 #strike price
     Kset=pd.Series([K]*Numberofpaths)
     cset=np.max(SPtnv-Kset,0)
@@ -88,7 +71,7 @@ if __name__ == '__main__':
 
 
     #Call option price
-    plt.show()
+    #plt.show()
 
     #plt.plot(bins, 1/(sigma * np.sqrt(2 * np.pi)) * np.exp( - (bins - mu)**2 / (2 * sigma**2) ), linewidth=2, color='r')
     #plt.show()
